@@ -17,33 +17,8 @@ h1 {
   margin: 0;
 }
 
-.score-panel {
-  display: flex;
-  width: 100%;
-/*  margin-bottom: 25px;*/
-  justify-content: space-between;
-  position: absolute;
-}
-
-
-.score-panel .life {
-  margin: 0;
-  padding: 0;
-  flex-grow: 1;
-}
-
-.score-panel .life li {
-  list-style: none;
-  display: inline-block;
-}
-
 .fas{
 	color: red;
-}
-
-.score-panel p {
-	margin: 0;
-    flex-grow: 1;
 }
 
 /*MODAL*/

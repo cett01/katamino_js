@@ -2,18 +2,22 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">    
-	<title>Effective JavaScript: Frogger</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Katamino Game</title>
 	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="js/util/paper-full.min.js"></script>
+	<script type="text/javascript" src="js/util/jquery-3.6.0.min.js"></script>
+	<script src="js/view/drawer.js"></script>
+	<script src="js/util/constants.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 </head>
 <body>
 	<div class="container">
 		<header>
-			<h1>Arcade Game</h1>
+			<h1>Katamino</h1>
 		</header>
-		
-		<section class="score-panel">
+
+		<section>
 			<p>
 				Score: <span id="score-counter">0</span>
 			</p>
@@ -22,13 +26,7 @@
 				Level: <span id="level-counter">1</span>
 			</p>
 
-			<ul class="life">
-				<li id="no1"><i class="fas fa-heart fa-lg""></i></li>
-				<li id="no2"><i class="fas fa-heart fa-lg"></i></li>
-				<li id="no3"><i class="fas fa-heart fa-lg"></i></li>
-			</ul>
 		</section>
-
 		<div id="modal">
 			<div>
 				<h2>Game Over</h2>
@@ -37,10 +35,19 @@
 			</div>
 		</div>
 	</div>
-	
-	<script src="js/resources.js"></script>
-	<script src="js/app.js"></script>
-	<script src="js/engine.js"></script>
 
+
+	<!--<script src="js/resources.js"></script>
+	<script src="js/app.js"></script>
+
+	<script src="js/engine.js"></script>-->
+	<script>
+
+		$(function() {
+			initPaper(400,500,"red")
+			createBlock(BLOCK_TYPES["1"],{x:70,y:70})
+			createBlock(BLOCK_TYPES["2"],{x:70,y:170})
+		});
+	</script>
 </body>
 </html>
