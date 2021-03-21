@@ -1,53 +1,90 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Katamino Game</title>
-	<link rel="stylesheet" href="css/style.css">
-	<script type="text/javascript" src="js/util/paper-full.min.js"></script>
-	<script type="text/javascript" src="js/util/jquery-3.6.0.min.js"></script>
-	<script src="js/view/drawer.js"></script>
-	<script src="js/util/constants.js"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Katamino Game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/util/paper-full.min.js"></script>
+    <script type="text/javascript" src="js/util/jquery-3.6.0.min.js"></script>
+
+    <script src="js/view/drawer.js"></script>
+    <script src="js/util/constants.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 </head>
 <body>
-	<div class="container">
-		<header>
-			<h1>Katamino</h1>
-		</header>
+<div class="container">
+    <br/>
+    <header>
+        <h1>Katamino</h1>
+    </header>
+    <!-- Example single danger button -->
+    <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false" id="btnCountMenu">
+            3
+        </button>
+        <div class="dropdown-menu" id="dropDownCountMenu">
+        </div>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false" id="btnLevelMenu">A
+        </button>
+        <div class="dropdown-menu" id="dropDownLevelMenu">
+        </div>
+    </div>
 
-		<section>
-			<p>
-				Score: <span id="score-counter">0</span>
-			</p>
+</div>
 
-			<p>
-				Level: <span id="level-counter">1</span>
-			</p>
+<script>
 
-		</section>
-		<div id="modal">
-			<div>
-				<h2>Game Over</h2>
-				<p>Your score was </p>
-				<button id="button">Play again!</button>
-			</div>
-		</div>
-	</div>
+  $(function () {
+    Object.keys(PENTAS).forEach(function (key) {
+      let elem = `<a class="dropdown-item" href="#">${key}</a>`;
+      $("#dropDownCountMenu").append($(elem));
+    });
+    $("#dropDownCountMenu a").click(function () {
+      $("#btnCountMenu:first-child").text($(this).text());
+      $("#btnCountMenu:first-child").val($(this).text());
+      $("#dropDownLevelMenu").empty()
+      Object.keys(PENTAS[$(this).text()]).forEach(function (key) {
+        let elem = `<a class="dropdown-item" href="#">${key}</a>`;
+        console.log("elem");
 
+        $("#dropDownLevelMenu").append($(elem));
+      });
+      createNew($("#btnCountMenu:first-child").val(), $("#btnLevelMenu:first-child").val())
+      $("#dropDownLevelMenu").children().click(function () {
+        $("#btnLevelMenu:first-child").text($(this).text());
+        $("#btnLevelMenu:first-child").val($(this).text());
+        createNew($("#btnCountMenu:first-child").val(), $("#btnLevelMenu:first-child").val())
+      });
+    });
+    createNew();
 
-	<!--<script src="js/resources.js"></script>
-	<script src="js/app.js"></script>
+    function createNew(blockCount = 3, name = "A") {
+      if (!blockCount || !name) return;
+      initPaper(400, 500, "red");
+      createMainPanel(blockCount, {x: BLOCK_SIZE, y: BLOCK_SIZE});
+      let k = 1;
+      PENTAS[blockCount][name].forEach((item, index) => {
+        createBlock(BLOCK_TYPES[item], {x: BLOCK_SIZE * k, y: BLOCK_SIZE * k});
+        k += 2;
+      });
+    }
 
-	<script src="js/engine.js"></script>-->
-	<script>
+  });
+</script>
 
-		$(function() {
-			initPaper(400,500,"red");
-			createBlock(BLOCK_TYPES["1"],{x:BLOCK_SIZE,y:BLOCK_SIZE});
-			createBlock(BLOCK_TYPES["2"],{x:BLOCK_SIZE,y:BLOCK_SIZE*3});
-		});
-	</script>
 </body>
 </html>

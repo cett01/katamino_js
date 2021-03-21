@@ -9,53 +9,53 @@ const BLOCK_TYPES = {
         shape: [[1, 1, 1, 1],
             [0, 0, 1, 0]], color: "brown"
     },
-    3: {
+    3: {//sorunlu
         key:3,
-        shape: [[1, 1, 1],
-            [0, 0, 1],
-            [0, 0, 1]], color: "lightblue"
+        shape: [[1, 1, 1,0],
+            [0, 0, 1,0],
+            [0, 0, 1,0]], color: "lightblue"
     },
     4: {
         key:4,
         shape: [[0, 1, 1, 1],
             [1, 1, 0, 0]], color: "darkblue"
     },
-    5: {
+    5: {//sorunlu
         key:5,
         shape: [[1, 1, 1],
-            [1, 1, 0], [0, 0, 0]], color: "pink"
+            [1, 1, 0]], color: "pink"
     },
-    6: {
+    6: {//sorunlu
         key:6,
-        shape: [[1, 0, 1],
-            [1, 1, 1], [0, 0, 0]], color: "yellow"
+        shape: [[1, 1, 1],
+            [1, 0, 1]], color: "yellow"
     },
-    7: {
+    7: {//sorunlu
         key:7,
         shape: [[1, 1, 1],
             [0, 1, 0],
             [0, 1, 0]], color: "darkgreen"
     },
-    8: {
+    8: {//sorunlu
         key:8,
         shape: [[0, 1, 1],
             [1, 1, 0],
             [1, 0, 0]], color: "green"
     },
-    9: {
+    9: {//sorunlu
         key:9,
         shape: [[1, 0, 0],
             [1, 1, 1],
             [0, 0, 1]], color: "cyan"
     },
-    10: {
+    10: {//sorunlu
         key:10,
         shape: [[0, 1, 0],
             [1, 1, 1],
             [0, 0, 1]], color: "gray"
     },
-    11: {key:11,shape: [[1, 1, 1, 1, 1]], color: "aqua"},
-    12: {key:12,
+    11: {key:11,shape: [[1, 1, 1, 1, 1]], color: "aqua"},//sorunlu
+    12: {key:12,//sorunlu
         shape: [[0, 1, 0],
             [1, 1, 1],
             [0, 1, 0]], color: "red"
